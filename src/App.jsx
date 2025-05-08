@@ -6,7 +6,7 @@ export default function App() {
   const [pressure, setPressure] = useState(30);
   const [em1Ratio, setEm1Ratio] = useState(30);
   const [himuRatio, setHimuRatio] = useState(70);
-  const [status, setStatus] = useState("🌋 火山稳定中");
+  const [status, setStatus] = useState("🌋 Volcano is stable");
 
   function nextTurn(action) {
     const newYear = year - 10;
@@ -24,11 +24,11 @@ export default function App() {
     }
 
     if (newPressure >= 80) {
-      setStatus("⚠️ 压力过高！崩塌风险极大");
+      setStatus("⚠️ High pressure! Collapse risk is critical");
     } else if (newPressure <= 20) {
-      setStatus("🟢 压力释放良好");
+      setStatus("🟢 Pressure well released");
     } else {
-      setStatus("🌋 火山稳定中");
+      setStatus("🌋 Volcano is stable");
     }
 
     setYear(newYear);
@@ -40,25 +40,25 @@ export default function App() {
   return (
     <div className="p-4 max-w-xl mx-auto space-y-4">
       <div className="bg-white shadow-md rounded-lg p-4">
-        <h1 className="text-xl font-bold">火山守护者：佛古岛的命运</h1>
-        <p>年份：公元前 {year},000 年</p>
+        <h1 className="text-xl font-bold">Volcano Guardian: Fate of Fogo Island</h1>
+        <p>Year: {year},000 BC</p>
         <p className="text-sm text-gray-600">{status}</p>
         <div className="mt-4">
-          <label className="block mb-1">🌡️ 岩浆压力</label>
+          <label className="block mb-1">🌡️ Magma Pressure</label>
           <div className="w-full bg-gray-200 h-4 rounded-full">
             <div
               className="bg-red-500 h-4 rounded-full"
               style={{ width: `${pressure}%` }}
             ></div>
           </div>
-          <p className="mt-2">🧪 HIMU 成分：{himuRatio}% | EM1 成分：{em1Ratio}%</p>
+          <p className="mt-2">🧪 HIMU: {himuRatio}% | EM1: {em1Ratio}%</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-        <button onClick={() => nextTurn("release")} className="bg-blue-500 text-white px-4 py-2 rounded">释放岩浆</button>
-        <button onClick={() => nextTurn("seal")} className="bg-yellow-500 text-white px-4 py-2 rounded">封闭浅储层</button>
-        <button onClick={() => nextTurn("deepen")} className="bg-green-600 text-white px-4 py-2 rounded">加深地幔通道</button>
+        <button onClick={() => nextTurn("release")} className="bg-blue-500 text-white px-4 py-2 rounded">Release Magma</button>
+        <button onClick={() => nextTurn("seal")} className="bg-yellow-500 text-white px-4 py-2 rounded">Seal Shallow Reservoir</button>
+        <button onClick={() => nextTurn("deepen")} className="bg-green-600 text-white px-4 py-2 rounded">Deepen Mantle Channel</button>
       </div>
     </div>
   );
